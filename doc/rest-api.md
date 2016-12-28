@@ -314,7 +314,7 @@ Input:
         "password": "server-trust-password"     # The trust password for that server (only required if untrusted)
     }
 
-<h2 id="api_certificates_fingerprint"> /1.0/certificates/<fingerprint> </h2>
+<h2 id="api_certificates_fingerprint"> /1.0/certificates/&lt;fingerprint&gt; </h2>
 ### GET
  * Description: trusted certificate information
  * Authentication: trusted
@@ -566,7 +566,7 @@ Input (using a remote container, in push mode sent over the migration websocket 
                    "live": true                                                         # Whether migration is performed live
     }
 
-<h2 id="api_containers_name"> /1.0/containers/<name> </h2>
+<h2 id="api_containers_name"> /1.0/containers/&lt;name&gt; </h2>
 ### GET
  * Description: Container information
  * Authentication: trusted
@@ -720,7 +720,7 @@ Input (none at present):
 
 HTTP code for this should be 202 (Accepted).
 
-<h2 id="api_containers_name_exec"> /1.0/containers/<name>/exec </h2>
+<h2 id="api_containers_name_exec"> /1.0/containers/&lt;name&gt;/exec </h2>
 ### POST
  * Description: run a remote command
  * Authentication: trusted
@@ -784,7 +784,7 @@ operation's metadata:
         "return": 0
     }
 
-<h2 id="api_containers_name_files"> /1.0/containers/<name>/files </h2>
+<h2 id="api_containers_name_files"> /1.0/containers/&lt;name&gt;/files </h2>
 ### GET (?path=/path/inside/the/container)
  * Description: download a file or directory listing from the container
  * Authentication: trusted
@@ -819,7 +819,7 @@ The following headers may be set by the client:
 This is designed to be easily usable from the command line or even a web
 browser.
 
-<h2 id="api_containers_name_snapshots"> /1.0/containers/<name>/snapshots </h2>
+<h2 id="api_containers_name_snapshots"> /1.0/containers/&lt;name&gt;/snapshots </h2>
 ### GET
  * Description: List of snapshots
  * Authentication: trusted
@@ -941,7 +941,7 @@ Input (none at present):
 
 HTTP code for this should be 202 (Accepted).
 
-<h2 id="api_containers_name_state"> /1.0/containers/<name>/state </h2>
+<h2 id="api_containers_name_state"> /1.0/containers/&lt;name&gt;/state </h2>
 ### GET
  * Description: current state
  * Authentication: trusted
@@ -1107,7 +1107,7 @@ Input:
         "stateful": true        # Whether to store or restore runtime state before stopping or startiong (only valid for stop and start, defaults to false)
     }
 
-<h2 id="api_containers_name_logs"> /1.0/containers/<name>/logs </h2>
+<h2 id="api_containers_name_logs"> /1.0/containers/&lt;name&gt;/logs </h2>
 ### GET
 * Description: Returns a list of the log files available for this container.
   Note that this works on containers that have been deleted (or were never
@@ -1520,7 +1520,7 @@ Input:
         }
     }
 
-<h2 id="api_networks_name"> /1.0/networks/<name> </h2>
+<h2 id="api_networks_name"> /1.0/networks/&lt;name&gt; </h2>
 ### GET
  * Description: information about a network
  * Authentication: trusted
@@ -1616,7 +1616,7 @@ HTTP code for this should be 202 (Accepted).
         "/1.0/operations/092a8755-fd90-4ce4-bf91-9f87d03fd5bc"
     ]
 
-<h2 id="api_operation_uuid"> /1.0/operations/<uuid> </h2>
+<h2 id="api_operation_uuid"> /1.0/operations/&lt;uuid&gt; </h2>
 ### GET
  * Description: background operation
  * Authentication: trusted
@@ -1717,7 +1717,7 @@ Input:
         }
     }
 
-<h2 id="api_profiles_name"> /1.0/profiles/<name> </h2>
+<h2 id="api_profiles_name"> /1.0/profiles/&lt;name&gt; </h2>
 ### GET
  * Description: profile configuration
  * Authentication: trusted
