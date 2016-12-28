@@ -161,37 +161,37 @@ It's recommended that the client always subscribes to the operations
 notification type before triggering remote operations so that it doesn't
 have to then poll for their status.
 
-# API structure
- * /
-   * /1.0
-     * /1.0/certificates
-       * /1.0/certificates/\<fingerprint\>
-     * /1.0/containers
-       * /1.0/containers/\<name\>
-         * /1.0/containers/\<name\>/exec
-         * /1.0/containers/\<name\>/files
-         * /1.0/containers/\<name\>/snapshots
+<h1 id="api_toc"> API structure </h1>
+ * [/](#api)
+   * [/1.0](#api_10)
+     * [/1.0/certificates](#api_certificates)
+       * [/1.0/certificates/\<fingerprint\>](#api_certificates_fingerprint)
+     * [/1.0/containers](#api_containers)
+       * [/1.0/containers/\<name\>](#api_containers_name)
+         * [/1.0/containers/\<name\>/exec](#api_containers_name_exec)
+         * [/1.0/containers/\<name\>/files](#api_containers_name_files)
+         * [/1.0/containers/\<name\>/snapshots](#api_containers_name_snapshots)
          * /1.0/containers/\<name\>/snapshots/\<name\>
-         * /1.0/containers/\<name\>/state
-         * /1.0/containers/\<name\>/logs
+         * [/1.0/containers/\<name\>/state](#api_containers_name_state)
+         * [/1.0/containers/\<name\>/logs](#api_containers_name_logs)
          * /1.0/containers/\<name\>/logs/\<logfile\>
-     * /1.0/events
-     * /1.0/images
-       * /1.0/images/\<fingerprint\>
+     * [/1.0/events](#api_events)
+     * [/1.0/images](#api_images)
+       * [/1.0/images/\<fingerprint\>](#api_images_fingerprint)
          * /1.0/images/\<fingerprint\>/export
-       * /1.0/images/aliases
+       * [/1.0/images/aliases](#api_images_aliases)
          * /1.0/images/aliases/\<name\>
-     * /1.0/networks
-       * /1.0/networks/\<name\>
-     * /1.0/operations
-       * /1.0/operations/\<uuid\>
+     * [/1.0/networks](#api_networks)
+       * [/1.0/networks/\<name\>](#api_networks_name)
+     * [/1.0/operations](#api_operations)
+       * [/1.0/operations/\<uuid\>](#api_operation_uuid)
          * /1.0/operations/\<uuid\>/wait
          * /1.0/operations/\<uuid\>/websocket
-     * /1.0/profiles
-       * /1.0/profiles/\<name\>
+     * [/1.0/profiles](#api_profiles)
+       * [/1.0/profiles/\<name\>](#api_profiles_name)
 
 # API details
-## /
+<h2 id="api"> / </h2>
 ### GET
  * Description: List of supported APIs
  * Authentication: guest
@@ -204,7 +204,7 @@ Return value:
         "/1.0"
     ]
 
-## /1.0/
+<h2 id="api_10"> /1.0 </h2>
 ### GET
  * Description: Server configuration and environment information
  * Authentication: guest, untrusted or trusted
@@ -286,7 +286,7 @@ Input (updates only the listed keys, rest remains intact):
         }
     }
 
-## /1.0/certificates
+<h2 id="api_certificates"> /1.0/certificates </h2>
 ### GET
  * Description: list of trusted certificates
  * Authentication: trusted
@@ -314,7 +314,7 @@ Input:
         "password": "server-trust-password"     # The trust password for that server (only required if untrusted)
     }
 
-## /1.0/certificates/\<fingerprint\>
+<h2 id="api_certificates_fingerprint"> /1.0/certificates/\<fingerprint\> </h2>
 ### GET
  * Description: trusted certificate information
  * Authentication: trusted
@@ -371,7 +371,7 @@ Input (none at present):
 
 HTTP code for this should be 202 (Accepted).
 
-## /1.0/containers
+<h2 id="api_containers"> /1.0/containers </h2>
 ### GET
  * Description: List of containers
  * Authentication: trusted
@@ -566,7 +566,7 @@ Input (using a remote container, in push mode sent over the migration websocket 
                    "live": true                                                         # Whether migration is performed live
     }
 
-## /1.0/containers/\<name\>
+<h2 id="api_containers_name"> /1.0/containers/\<name\> </h2>
 ### GET
  * Description: Container information
  * Authentication: trusted
@@ -720,7 +720,7 @@ Input (none at present):
 
 HTTP code for this should be 202 (Accepted).
 
-## /1.0/containers/\<name\>/exec
+<h2 id="api_containers_name_exec"> /1.0/containers/\<name\>/exec </h2>
 ### POST
  * Description: run a remote command
  * Authentication: trusted
@@ -784,7 +784,7 @@ operation's metadata:
         "return": 0
     }
 
-## /1.0/containers/\<name\>/files
+<h2 id="api_containers_name_files"> /1.0/containers/\<name\>/files </h2>
 ### GET (?path=/path/inside/the/container)
  * Description: download a file or directory listing from the container
  * Authentication: trusted
@@ -819,7 +819,7 @@ The following headers may be set by the client:
 This is designed to be easily usable from the command line or even a web
 browser.
 
-## /1.0/containers/\<name\>/snapshots
+<h2 id="api_containers_name_snapshots"> /1.0/containers/\<name\>/snapshots </h2>
 ### GET
  * Description: List of snapshots
  * Authentication: trusted
@@ -941,7 +941,7 @@ Input (none at present):
 
 HTTP code for this should be 202 (Accepted).
 
-## /1.0/containers/\<name\>/state
+<h2 id="api_containers_name_state"> /1.0/containers/\<name\>/state </h2>
 ### GET
  * Description: current state
  * Authentication: trusted
@@ -1107,7 +1107,7 @@ Input:
         "stateful": true        # Whether to store or restore runtime state before stopping or startiong (only valid for stop and start, defaults to false)
     }
 
-## /1.0/containers/\<name\>/logs
+<h2 id="api_containers_name_logs"> /1.0/containers/\<name\>/logs </h2>
 ### GET
 * Description: Returns a list of the log files available for this container.
   Note that this works on containers that have been deleted (or were never
@@ -1137,7 +1137,7 @@ Return:
 * Operation: Sync
 * Return: empty response or standard error
 
-## /1.0/events
+<h2 id="api_events"> /1.0/events </h2>
 This URL isn't a real REST API endpoint, instead doing a GET query on it
 will upgrade the connection to a websocket on which notifications will
 be sent.
@@ -1177,7 +1177,7 @@ This never returns. Each notification is sent as a separate JSON dict:
         }
     }
 
-## /1.0/images
+<h2 id="api_images"> /1.0/images </h2>
 ### GET
  * Description: list of images (public or private)
  * Authentication: guest or trusted
@@ -1265,7 +1265,7 @@ After the input is received by LXD, a background operation is started
 which will add the image to the store and possibly do some backend
 filesystem-specific optimizations.
 
-## /1.0/images/\<fingerprint\>
+<h2 id="api_images_fingerprint"> /1.0/images/\<fingerprint\> </h2>
 ### GET (optional ?secret=SECRET)
  * Description: Image description and metadata
  * Authentication: guest or trusted
@@ -1395,7 +1395,7 @@ The secret is automatically invalidated 5s after an image URL using it
 has been accessed. This allows to both retried the image information and
 then hit /export with the same secret.
 
-## /1.0/images/aliases
+<h2 id="api_images_aliases"> /1.0/images/aliases </h2>
 ### GET
  * Description: list of aliases (public or private based on image visibility)
  * Authentication: guest or trusted
@@ -1490,7 +1490,7 @@ Input (none at present):
     {
     }
 
-## /1.0/networks
+<h2 id="api_networks"> /1.0/networks </h2>
 ### GET
  * Description: list of networks
  * Authentication: trusted
@@ -1520,7 +1520,7 @@ Input:
         }
     }
 
-## /1.0/networks/\<name\>
+<h2 id="api_networks_name"> /1.0/networks/\<name\> </h2>
 ### GET
  * Description: information about a network
  * Authentication: trusted
@@ -1604,7 +1604,7 @@ Input (none at present):
 
 HTTP code for this should be 202 (Accepted).
 
-## /1.0/operations
+<h2 id="api_operations"> /1.0/operations </h2>
 ### GET
  * Description: list of operations
  * Authentication: trusted
@@ -1616,7 +1616,7 @@ HTTP code for this should be 202 (Accepted).
         "/1.0/operations/092a8755-fd90-4ce4-bf91-9f87d03fd5bc"
     ]
 
-## /1.0/operations/\<uuid\>
+<h2 id="api_operation_uuid"> /1.0/operations/\<uuid\> </h2>
 ### GET
  * Description: background operation
  * Authentication: trusted
@@ -1682,7 +1682,7 @@ Input (similar but times out after 30s): ?timeout=30
  * Operation: sync
  * Return: websocket stream or standard error
 
-## /1.0/profiles
+<h2 id="api_profiles"> /1.0/profiles </h2>
 ### GET
  * Description: List of configuration profiles
  * Authentication: trusted
@@ -1717,7 +1717,7 @@ Input:
         }
     }
 
-## /1.0/profiles/\<name\>
+<h2 id="api_profiles_name"> /1.0/profiles/\<name\> </h2>
 ### GET
  * Description: profile configuration
  * Authentication: trusted
